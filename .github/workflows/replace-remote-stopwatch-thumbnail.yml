@@ -1,0 +1,47 @@
+name: Replace RemoteStopwatch thumbnail
+
+on:
+  push:
+    paths:
+      - '.github/workflows/replace-remote-stopwatch-thumbnail.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  replace-thumbnail:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch full-resolution source image
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p assets/remote-stopwatch
+          URL='https://media.canva.com/v2/image-resize/format:PNG/height:1254/quality:100/uri:ifs%3A%2F%2FM%2F6b1d9ab1-b3a8-4eed-ac92-41676061b4ea/watermark:F/width:1254?csig=AAAAAAAAAAAAAAAAAAAAAIDPcxEzZ64MmHmeSDugid3VtmcWbgrNhvJI1lVS6nS1&exp=1789548527&osig=AAAAAAAAAAAAAAAAAAAAAOrjYKxei4ELg3F2dkHRJjKgaWVutil5p4W42_T24QoR&signer=media-rpc&x-canva-quality=thumbnail'
+          curl --fail --location --retry 2 --output assets/remote-stopwatch/remote-stopwatch-thumbnail.png "$URL"
+
+      - name: Verify PNG dimensions
+        shell: python
+        run: |
+          from pathlib import Path
+          import struct
+          p = Path('assets/remote-stopwatch/remote-stopwatch-thumbnail.png')
+          data = p.read_bytes()
+          assert data[:8] == b'\x89PNG\r\n\x1a\n', 'Not a PNG'
+          width, height = struct.unpack('>II', data[16:24])
+          print(f'PNG dimensions: {width}x{height}, bytes={len(data)}')
+          assert (width, height) == (1254, 1254), f'Unexpected dimensions: {width}x{height}'
+
+      - name: Commit full-resolution image and remove temporary workflow
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm .github/workflows/replace-remote-stopwatch-thumbnail.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add assets/remote-stopwatch/remote-stopwatch-thumbnail.png .github/workflows/replace-remote-stopwatch-thumbnail.yml
+          git commit -m 'Replace RemoteStopwatch thumbnail with full-resolution source'
+          git push
