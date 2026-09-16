@@ -57,8 +57,17 @@ section{padding:26px 0}
 footer{margin-top:42px;padding:28px 0 40px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
 .footer-row{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 .lang-section{display:none} .lang-section.active{display:block}
+.youtube-card{display:grid;grid-template-columns:1.35fr .65fr;gap:24px;align-items:center;padding:30px;border:1px solid #ffd8d8;border-radius:26px;background:linear-gradient(135deg,#fff,#fff7f7);box-shadow:var(--shadow)}
+.youtube-badge{display:inline-flex;align-items:center;gap:8px;color:#d92f2f;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.youtube-badge::before{content:"";width:10px;height:10px;border-radius:3px;background:#ff3030;box-shadow:0 0 0 5px #ffe6e6}
+.youtube-card h2{font-size:clamp(28px,4vw,42px);letter-spacing:-.04em;margin:12px 0 8px}
+.youtube-card p{color:var(--muted);margin:0;max-width:640px}
+.youtube-card .btn{margin-top:20px}
+.youtube-side{min-height:170px;display:grid;place-items:center;text-align:center;border-radius:20px;background:linear-gradient(145deg,#ff4b4b,#b91e35);color:#fff;padding:24px;box-shadow:0 18px 36px rgba(185,30,53,.2)}
+.youtube-side strong{font-size:clamp(20px,3vw,30px);letter-spacing:-.03em}
+.youtube-side span{margin-top:6px;font-size:14px;opacity:.88}
 @media(max-width:900px){.grid,.info-grid{grid-template-columns:1fr}.hero p{font-size:17px}}
-@media(max-width:700px){.nav-link{display:none}.hero h1{font-size:clamp(34px,10vw,56px)}.section-head{flex-direction:column;align-items:flex-start}.section-head h2{font-size:32px}}
+@media(max-width:700px){.nav-link{display:none}.hero h1{font-size:clamp(34px,10vw,56px)}.section-head{flex-direction:column;align-items:flex-start}.section-head h2{font-size:32px}.youtube-card{grid-template-columns:1fr;padding:24px}.youtube-side{min-height:130px}}
 </style>
 </head>
 <body>
@@ -67,9 +76,10 @@ footer{margin-top:42px;padding:28px 0 40px;border-top:1px solid var(--line);colo
     <nav>
       <a class="brand" href="#top"><span class="brand-mark">C</span><span>Creovia Nishigon</span></a>
       <div class="nav-actions">
-        <a class="nav-link" href="#apps" data-ja="アプリ" data-en="Apps">アプリ</a>
-        <a class="nav-link" href="#about" data-ja="About" data-en="About">About</a>
-        <a class="nav-link" href="#support" data-ja="サポート" data-en="Support">サポート</a>
+        <a class="nav-link" id="appsNav" href="#apps" data-ja="アプリ" data-en="Apps">アプリ</a>
+        <a class="nav-link" id="aboutNav" href="#about" data-ja="About" data-en="About">About</a>
+        <a class="nav-link" id="youtubeNav" href="#youtube-ja" data-ja="YouTube" data-en="YouTube">YouTube</a>
+        <a class="nav-link" id="supportNav" href="#support" data-ja="サポート" data-en="Support">サポート</a>
         <div class="lang"><button id="jaBtn" type="button" onclick="setLang('ja')">JA</button><button id="enBtn" type="button" onclick="setLang('en')">EN</button></div>
       </div>
     </nav>
@@ -81,7 +91,7 @@ footer{margin-top:42px;padding:28px 0 40px;border-top:1px solid var(--line);colo
       <div class="wrap">
         <div class="hero-art"><img src="assets/creovia-nishigon-banner.png" alt="Creovia Nishigon banner artwork" loading="eager"></div>
         <div class="hero-copy">
-          <div class="eyebrow">Apps &amp; Tools by Nishigon</div>
+          <div class="eyebrow">Apps・Code・Creation</div>
           <h1>日常の小さな不便を、
 使えるツールに。</h1>
           <p>Creovia Nishigonは、日常の「あったら便利」を実際に使えるAndroidアプリやデジタルツールにする個人開発ブランドです。</p>
@@ -98,6 +108,19 @@ footer{margin-top:42px;padding:28px 0 40px;border-top:1px solid var(--line);colo
         </div>
       </div>
     </section>
+    <section id="youtube-ja">
+      <div class="wrap">
+        <div class="youtube-card">
+          <div>
+            <div class="youtube-badge">YouTube</div>
+            <h2>アプリの紹介や制作の記録</h2>
+            <p>Creovia Nishigonのアプリ紹介動画や、制作に関するコンテンツをYouTubeで公開しています。</p>
+            <a class="btn primary" href="https://www.youtube.com/channel/UC-aBhFpdQz3Ee2Lc9Gu0Yhw" target="_blank" rel="noopener noreferrer">YouTubeチャンネルを見る</a>
+          </div>
+          <div class="youtube-side"><strong>Creovia Nishigon</strong><span>Apps・Code・Creation</span></div>
+        </div>
+      </div>
+    </section>
     <section id="about">
       <div class="wrap">
         <div class="info-grid"><div class="info"><h2>Creovia Nishigonについて</h2><p>「あったら便利」を実際に使える形にすることを目指して、アプリやツールを個人開発しています。迷いにくい操作と、目的に直結する機能を重視しています。</p></div><div class="info" id="support"><h3>Support</h3><p>アプリに関するお問い合わせ・不具合報告はこちら。</p><p style="margin-top:12px"><a class="contact" href="mailto:nishigon.app.support@gmail.com">nishigon.app.support@gmail.com</a></p></div></div>
@@ -110,7 +133,7 @@ footer{margin-top:42px;padding:28px 0 40px;border-top:1px solid var(--line);colo
       <div class="wrap">
         <div class="hero-art"><img src="assets/creovia-nishigon-banner.png" alt="Creovia Nishigon banner artwork" loading="eager"></div>
         <div class="hero-copy">
-          <div class="eyebrow">Apps &amp; Tools by Nishigon</div>
+          <div class="eyebrow">Apps・Code・Creation</div>
           <h1>Turning everyday friction into useful tools.</h1>
           <p>Creovia Nishigon is an independent developer brand creating practical Android apps and digital tools for everyday use.</p>
           <div class="hero-actions"><a class="btn primary" href="#apps-en">Explore apps</a><a class="btn secondary" href="https://www.youtube.com/channel/UC-aBhFpdQz3Ee2Lc9Gu0Yhw" target="_blank" rel="noopener noreferrer">YouTube</a><a class="btn secondary" href="mailto:nishigon.app.support@gmail.com">Contact</a></div>
@@ -126,6 +149,19 @@ footer{margin-top:42px;padding:28px 0 40px;border-top:1px solid var(--line);colo
         </div>
       </div>
     </section>
+    <section id="youtube-en">
+      <div class="wrap">
+        <div class="youtube-card">
+          <div>
+            <div class="youtube-badge">YouTube</div>
+            <h2>App videos and making notes</h2>
+            <p>Watch app introductions and creation-focused content from Creovia Nishigon on YouTube.</p>
+            <a class="btn primary" href="https://www.youtube.com/channel/UC-aBhFpdQz3Ee2Lc9Gu0Yhw" target="_blank" rel="noopener noreferrer">Visit YouTube channel</a>
+          </div>
+          <div class="youtube-side"><strong>Creovia Nishigon</strong><span>Apps・Code・Creation</span></div>
+        </div>
+      </div>
+    </section>
     <section id="about-en">
       <div class="wrap">
         <div class="info-grid"><div class="info"><h2>About Creovia Nishigon</h2><p>Creovia Nishigon turns useful ideas into practical apps and tools, with an emphasis on clear interaction and features that directly serve their purpose.</p></div><div class="info" id="support-en"><h3>Support</h3><p>For app support, questions, or bug reports:</p><p style="margin-top:12px"><a class="contact" href="mailto:nishigon.app.support@gmail.com">nishigon.app.support@gmail.com</a></p></div></div>
@@ -133,7 +169,7 @@ footer{margin-top:42px;padding:28px 0 40px;border-top:1px solid var(--line);colo
     </section>
   </div>
 </main>
-<footer><div class="wrap footer-row"><span>© <span id="year"></span> Creovia Nishigon</span><span><a href="https://www.youtube.com/channel/UC-aBhFpdQz3Ee2Lc9Gu0Yhw" target="_blank" rel="noopener noreferrer">YouTube</a> · <a href="app-ads.txt">app-ads.txt</a></span></div></footer>
+<footer><div class="wrap footer-row"><span>© <span id="year"></span> Creovia Nishigon</span><span><a href="https://www.youtube.com/channel/UC-aBhFpdQz3Ee2Lc9Gu0Yhw" target="_blank" rel="noopener noreferrer">YouTube</a> · <a href="https://nishigon.github.io/remote-stopwatch-privacy-policy/">Remote Stopwatch Privacy</a> · <a href="https://nishigon.github.io/speak-solve-alarm-privacy-policy/">Speak Solve Alarm Privacy</a> · <a href="app-ads.txt">app-ads.txt</a></span></div></footer>
 <script>
 function setLang(lang){
   const isJa=lang==='ja';
@@ -143,6 +179,10 @@ function setLang(lang){
   document.getElementById('jaBtn').classList.toggle('active',isJa);
   document.getElementById('enBtn').classList.toggle('active',!isJa);
   document.querySelectorAll('[data-ja][data-en]').forEach(function(el){el.textContent=isJa?el.dataset.ja:el.dataset.en;});
+  document.getElementById('appsNav').href=isJa?'#apps':'#apps-en';
+  document.getElementById('aboutNav').href=isJa?'#about':'#about-en';
+  document.getElementById('youtubeNav').href=isJa?'#youtube-ja':'#youtube-en';
+  document.getElementById('supportNav').href=isJa?'#support':'#support-en';
   try{localStorage.setItem('siteLanguage',lang)}catch(e){}
 }
 let saved=null;try{saved=localStorage.getItem('siteLanguage')}catch(e){}
