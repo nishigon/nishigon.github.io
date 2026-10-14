@@ -54,6 +54,10 @@ section{padding:26px 0}
 .info{padding:28px;border:1px solid var(--line);border-radius:26px;background:linear-gradient(180deg,#fff,#fbfdff);box-shadow:var(--shadow)}
 .info h2,.info h3{margin:0 0 10px}
 .info p{margin:0;color:var(--muted)}
+.automation-feature{display:flex;align-items:center;justify-content:space-between;gap:24px;border-color:#cfe7e1;background:linear-gradient(135deg,#fff,#f2fcf9)}
+.automation-feature h2{font-size:28px;letter-spacing:-.03em;margin:0}
+.automation-feature p{max-width:760px;margin:10px 0 0}
+.automation-feature .btn{flex-shrink:0}
 .contact{color:var(--accent);font-weight:800;text-decoration:none;overflow-wrap:anywhere}
 footer{margin-top:42px;padding:28px 0 40px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
 .footer-row{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
@@ -67,8 +71,8 @@ footer{margin-top:42px;padding:28px 0 40px;border-top:1px solid var(--line);colo
 .youtube-side{min-height:170px;display:grid;place-items:center;text-align:center;border-radius:20px;background:linear-gradient(145deg,#ff4b4b,#b91e35);color:#fff;padding:24px;box-shadow:0 18px 36px rgba(185,30,53,.2)}
 .youtube-side strong{font-size:clamp(20px,3vw,30px);letter-spacing:-.03em}
 .youtube-side span{margin-top:6px;font-size:14px;opacity:.88}
-@media(max-width:900px){.grid,.info-grid{grid-template-columns:1fr}.hero p{font-size:17px}}
-@media(max-width:700px){.nav-link{display:none}.hero h1{font-size:clamp(34px,10vw,56px)}.section-head{flex-direction:column;align-items:flex-start}.section-head h2{font-size:32px}.youtube-card{grid-template-columns:1fr;padding:24px}.youtube-side{min-height:130px}}
+@media(max-width:900px){.grid,.info-grid{grid-template-columns:1fr}.hero p{font-size:17px}.automation-feature{align-items:flex-start;flex-direction:column}}
+@media(max-width:700px){.nav-link{display:none}.hero h1{font-size:clamp(34px,10vw,56px)}.section-head{flex-direction:column;align-items:flex-start}.section-head h2{font-size:32px}.youtube-card{grid-template-columns:1fr;padding:24px}.youtube-side{min-height:130px}.automation-feature{padding:22px}.automation-feature h2{font-size:25px}.automation-feature .btn{width:100%}}
 </style>
 </head>
 <body>
@@ -127,6 +131,14 @@ footer{margin-top:42px;padding:28px 0 40px;border-top:1px solid var(--line);colo
         <div class="info-grid"><div class="info"><h2>Creovia Nishigonについて</h2><p>Creoviaは、Create（創る）とVia（道・経路）を組み合わせた名前です。「創造への道、アイデアを形にしていく場所」という意味を込めて、アプリやツールを個人開発しています。</p></div><div class="info" id="support"><h3>Support</h3><p>アプリに関するお問い合わせ・不具合報告はこちら。</p><p style="margin-top:12px"><a class="contact" href="mailto:nishigon.app.support@gmail.com">nishigon.app.support@gmail.com</a></p></div></div>
       </div>
     </section>
+    <section class="automation-feature-section">
+      <div class="wrap">
+        <article class="info automation-feature">
+          <div><div class="kicker">WORK AUTOMATION</div><h2>小さな職場の自動化ノート</h2><p>文字起こしやExcel転記、CSV集計などの身近な作業から、Make・n8nを使った業務自動化まで、手順やツールを実例とともに紹介しています。</p></div>
+          <a class="btn primary" href="https://work-automation-note.creovia-nishigon.workers.dev/" target="_blank" rel="noopener noreferrer">サイトを見る</a>
+        </article>
+      </div>
+    </section>
   </div>
 
   <div id="en" class="lang-section">
@@ -168,9 +180,17 @@ footer{margin-top:42px;padding:28px 0 40px;border-top:1px solid var(--line);colo
         <div class="info-grid"><div class="info"><h2>About Creovia Nishigon</h2><p>Creovia combines Create and Via, meaning a way or path. The name expresses a place where ideas find a path into reality through practical apps and tools.</p></div><div class="info" id="support-en"><h3>Support</h3><p>For app support, questions, or bug reports:</p><p style="margin-top:12px"><a class="contact" href="mailto:nishigon.app.support@gmail.com">nishigon.app.support@gmail.com</a></p></div></div>
       </div>
     </section>
+    <section class="automation-feature-section">
+      <div class="wrap">
+        <article class="info automation-feature">
+          <div><div class="kicker">WORK AUTOMATION</div><h2>小さな職場の自動化ノート</h2><p>Explore practical guides and tools for everyday work, from transcription, Excel data entry, and CSV tasks to automation with Make and n8n.</p></div>
+          <a class="btn primary" href="https://work-automation-note.creovia-nishigon.workers.dev/" target="_blank" rel="noopener noreferrer">Visit site</a>
+        </article>
+      </div>
+    </section>
   </div>
 </main>
-<footer><div class="wrap footer-row"><span>© <span id="year"></span> Creovia Nishigon</span><span><a href="https://www.youtube.com/channel/UC-aBhFpdQz3Ee2Lc9Gu0Yhw" target="_blank" rel="noopener noreferrer">YouTube</a> · <a href="https://nishigon.github.io/remote-stopwatch-privacy-policy/">Remote Stopwatch Privacy</a> · <a href="https://nishigon.github.io/speak-solve-alarm-privacy-policy/">Speak Solve Alarm Privacy</a> · <a href="app-ads.txt">app-ads.txt</a> ・ <a href="https://work-automation-note.creovia-nishigon.workers.dev/" target="_blank" rel="noopener noreferrer">小さな職場の自動化ノート</a></span></div></footer>
+<footer><div class="wrap footer-row"><span>© <span id="year"></span> Creovia Nishigon</span><span><a href="https://www.youtube.com/channel/UC-aBhFpdQz3Ee2Lc9Gu0Yhw" target="_blank" rel="noopener noreferrer">YouTube</a> · <a href="https://nishigon.github.io/remote-stopwatch-privacy-policy/">Remote Stopwatch Privacy</a> · <a href="https://nishigon.github.io/speak-solve-alarm-privacy-policy/">Speak Solve Alarm Privacy</a> · <a href="app-ads.txt">app-ads.txt</a></span></div></footer>
 <script>
 function setLang(lang){
   const isJa=lang==='ja';
